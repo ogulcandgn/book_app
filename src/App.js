@@ -35,6 +35,7 @@ function App() {
 
   return (
     <div className="app">
+      <h1>Reading Book</h1>
       <BookList books={books} onDelete={deleteBook} onEdit={editBook} />
       <BookCreate onCreate={createBook} />
     </div>
