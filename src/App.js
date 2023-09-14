@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BookCreate from "./components/BookCreate";
 import BookList from "./components/BookList";
 
@@ -18,18 +18,35 @@ function App() {
   };
 
   //delete books
-  const deleteBook = (id) => {
+  const deleteBook = async (id) => {
+    //sayfa reflesh olduğunda sildiğimiz booklar kalıcı olarak silinir
+    await axios.delete(`http://localhost:3001/books/${id}`);
+
     const updatedBooks = books.filter((book) => {
       return book.id !== id;
     });
     setBooks(updatedBooks);
   };
 
+  const fetchBooks = async () => {
+    const responce = await axios.get("http://localhost:3001/books");
+    setBooks(responce.data);
+  };
+
+  useEffect(() => {
+    fetchBooks();
+  }, []);
+
   //edit books
-  const editBook = (id, newTitle) => {
+  const editBook = async (id, newTitle) => {
+    //sayfa reflesh olduğunda yaptığımız editler kalıcı olur
+    const responce = await axios.put(`http://localhost:3001/books/${id}`, {
+      title: newTitle,
+    });
+    // console.log(responce);
     const updatedBooks = books.map((book) => {
       if (book.id === id) {
-        return { ...book, title: newTitle };
+        return { ...book, ...responce.data };
       }
       return book;
     });
