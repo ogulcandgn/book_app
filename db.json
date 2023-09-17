@@ -1,40 +1,24 @@
 {
   "books": [
     {
-      "title": "Arka Sokaklar",
+      "title": "asd",
+      "id": 3
+    },
+    {
+      "title": "sdf",
+      "id": 4
+    },
+    {
+      "title": "asdf",
+      "id": 5
+    },
+    {
+      "title": "as",
       "id": 6
     },
     {
-      "title": "de",
-      "id": 7
-    },
-    {
-      "title": "arka",
+      "title": "asdf",
       "id": 8
-    },
-    {
-      "title": "arka sokaklar",
-      "id": 9
-    },
-    {
-      "title": "deneme",
-      "id": 10
-    },
-    {
-      "title": "git",
-      "id": 11
-    },
-    {
-      "title": "commit",
-      "id": 12
-    },
-    {
-      "title": "deneme",
-      "id": 13
-    },
-    {
-      "title": "313131",
-      "id": 14
     }
   ]
 }

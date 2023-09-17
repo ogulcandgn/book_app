@@ -6,6 +6,16 @@ import BookList from "./components/BookList";
 function App() {
   const [books, setBooks] = useState([]);
 
+  //sayfa yüklendiğinde kayıtlı olan kitapları çağırır
+  const fetchBooks = async () => {
+    const responce = await axios.get("http://localhost:3001/books");
+    setBooks(responce.data);
+  };
+
+  useEffect(() => {
+    fetchBooks();
+  }, []);
+
   //create books
   const createBook = async (newTitle) => {
     //api üzerinden verimizi gönderiyoruz
@@ -27,15 +37,6 @@ function App() {
     });
     setBooks(updatedBooks);
   };
-
-  const fetchBooks = async () => {
-    const responce = await axios.get("http://localhost:3001/books");
-    setBooks(responce.data);
-  };
-
-  useEffect(() => {
-    fetchBooks();
-  }, []);
 
   //edit books
   const editBook = async (id, newTitle) => {
