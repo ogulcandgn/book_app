@@ -1,14 +1,15 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import BooksContext from "../context/context";
 import BookEdit from "./BookEdit";
 
 //başlangıçta edit sayfasının açılmasını istemediğimiz için default olarak false yapıyoruz
-function BookShow({ book, onDelete, onEdit }) {
+function BookShow({ book }) {
+  const { deleteBook } = useContext(BooksContext);
   const [showEdit, setShowEdit] = useState(false);
 
   //delete click
   const handleDeleteClick = () => {
-    onDelete(book.id);
+    deleteBook(book.id);
   };
 
   //edit click
@@ -24,7 +25,7 @@ function BookShow({ book, onDelete, onEdit }) {
   let content = <h3>{book.title}</h3>;
   if (showEdit) {
     //book edit'de edit alanına tıkladığımızda input içerisinde varsayılan kitap adını görüntülemek için prop geçiyoruz
-    content = <BookEdit book={book} onEdit={onEdit} showEdit={handleSubmit} />;
+    content = <BookEdit book={book} showEdit={handleSubmit} />;
   }
 
   return (

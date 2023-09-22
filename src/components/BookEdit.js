@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import BooksContext from "../context/context";
 
-function BookEdit({ book, onEdit, showEdit }) {
+function BookEdit({ book, showEdit }) {
+  const { editBook } = useContext(BooksContext);
   const [title, setTitle] = useState(book.title);
 
   //input değerini alıyoruz
@@ -11,8 +13,8 @@ function BookEdit({ book, onEdit, showEdit }) {
   //form'u göndermek için
   const handleSubmit = (e) => {
     e.preventDefault();
-    onEdit(book.id, title);
     showEdit();
+    editBook(book.id, title);
   };
 
   return (

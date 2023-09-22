@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import BooksContext from "../context/context";
 
-function BookCreate({ onCreate }) {
+function BookCreate() {
+  const { createBook } = useContext(BooksContext);
   const [title, setTitle] = useState([]);
 
   const handleChange = (e) => {
@@ -9,7 +11,7 @@ function BookCreate({ onCreate }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onCreate(title);
+    createBook(title);
     //submit olduğunda input value sıfırlanır
     setTitle("");
   };
