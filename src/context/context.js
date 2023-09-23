@@ -54,10 +54,9 @@ const Provider = ({ children }) => {
   const createBook = async (newTitle) => {
     console.log(newTitle);
     //api üzerinden verimizi gönderiyoruz
-    const tempVar = JSON.stringify(newTitle);
     try {
       const responce = await axios.post("http://localhost:3001/books", {
-        title: tempVar,
+        title: newTitle,
       });
 
       const updatedBooks = [...books, responce.data];
